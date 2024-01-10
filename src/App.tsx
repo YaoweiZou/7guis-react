@@ -1,6 +1,13 @@
-import Counter from "./components/guis/Counter";
+import GUISection from "@/components/GUISection";
+import Counter from "@/components/guis/Counter";
 
 function App() {
+  const guis = [
+    {
+      title: "Counter",
+      component: Counter
+    }
+  ];
   return (
     <main className="max-w-[1024px] py-5 px-[22px] m-auto">
       <h1 className="text-4xl font-semibold">7GUIs implementation with React</h1>
@@ -15,10 +22,11 @@ function App() {
         </a>
         .
       </p>
-      <section className="py-5">
-        <h2 className="text-2xl font-semibold">Counter</h2>
-        <Counter />
-      </section>
+      {guis.map(({ title, component: Component }) => (
+        <GUISection key={title} title={title}>
+          <Component />
+        </GUISection>
+      ))}
     </main>
   );
 }
