@@ -1,11 +1,16 @@
 import GUISection from "@/components/GUISection";
 import Counter from "@/components/guis/Counter";
+import TemperatureConverter from "@/components/guis/TemperatureConverter";
 
 function App() {
   const guis = [
     {
       title: "Counter",
       component: Counter
+    },
+    {
+      title: "Temperature Converter",
+      component: TemperatureConverter
     }
   ];
   return (
