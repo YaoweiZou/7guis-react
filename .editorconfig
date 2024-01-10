@@ -1,0 +1,4 @@
+[*]
+indent_size = 2
+[*.css, *.json]
+indent_size = 4
