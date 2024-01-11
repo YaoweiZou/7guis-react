@@ -8,7 +8,7 @@ export default function Input({
   readOnly,
   disabled,
   placeholder,
-  className
+  hasError
 }: {
   type: string;
   value: string | number | undefined;
@@ -16,16 +16,16 @@ export default function Input({
   readOnly?: boolean;
   disabled?: boolean;
   placeholder?: string;
-  className?: string;
+  hasError?: boolean;
 }) {
   return (
     <input
       className={classnames(
         "px-2 border border-solid border-gray-300 outline-0 rounded-md appearance-none outline-none focus:border-blue-400",
-        className,
         {
-          "bg-white": !disabled,
-          "bg-gray-100 cursor-not-allowed": disabled
+          "bg-white": (!disabled && !hasError),
+          "bg-gray-100 cursor-not-allowed": disabled,
+          "bg-red-300": hasError
         }
       )}
       type={type}

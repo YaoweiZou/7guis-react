@@ -1,7 +1,6 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Select from "@/components/Select";
-import classnames from "classnames";
 import { useState } from "react";
 
 export default function FlightBooker() {
@@ -54,7 +53,7 @@ export default function FlightBooker() {
         value={startDate}
         onChange={e => setStartDate(e.target.value)}
         placeholder="input start date"
-        className={classnames({ "bg-red-300": !validateDate(startDate) })}
+        hasError={!validateDate(startDate)}
       />
       {flightType === "return-flight" && (
         <Input
@@ -62,7 +61,7 @@ export default function FlightBooker() {
           value={returnDate}
           onChange={e => setReturnDate(e.target.value)}
           placeholder="input return date"
-          className={classnames({ "bg-red-300": !validateDate(returnDate) })}
+          hasError={!validateDate(returnDate)}
         />
       )}
       <Button onClick={onBookClick} disabled={disabledBook}>
