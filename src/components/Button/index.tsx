@@ -12,9 +12,9 @@ export default function Button({
 }) {
   return (
     <button
-      className={classnames("overflow-hidden px-2 border border-solid border-gray-300 rounded-md", {
-        "bg-white active:bg-gray-100 active:border-blue-400": !disabled,
-        "bg-gray-100 cursor-not-allowed": disabled
+      className={classnames("overflow-hidden rounded-md border border-solid border-gray-300 px-2", {
+        "bg-white active:border-blue-400 active:bg-gray-100": !disabled,
+        "cursor-not-allowed bg-gray-100": disabled
       })}
       onClick={onClick}
       disabled={disabled}

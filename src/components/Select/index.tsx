@@ -9,7 +9,7 @@ export default function Select({
 }) {
   return (
     <select
-      className="overflow-hidden py-1 px-2 bg-white border border-solid border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+      className="overflow-hidden rounded-md border border-solid border-gray-300 bg-white px-2 py-1 focus:border-blue-400 focus:outline-none"
       onChange={onChange}
     >
       {options.map(({ value, label }) => (

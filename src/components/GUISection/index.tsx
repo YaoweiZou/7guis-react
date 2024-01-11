@@ -5,7 +5,7 @@ export default function GUISection({ title, children }: { title: string; childre
   return (
     <section className="py-5">
       <h2 className="text-2xl font-semibold">{title}</h2>
-      <div className="inline-block my-6">
+      <div className="my-6 inline-block">
         <Window title={title}>{children}</Window>
       </div>
     </section>
