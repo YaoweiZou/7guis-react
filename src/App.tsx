@@ -1,5 +1,6 @@
 import GUISection from "@/components/GUISection";
 import Counter from "@/components/guis/Counter";
+import FlightBooker from "@/components/guis/FlightBooker";
 import TemperatureConverter from "@/components/guis/TemperatureConverter";
 
 function App() {
@@ -11,8 +12,13 @@ function App() {
     {
       title: "Temperature Converter",
       component: TemperatureConverter
+    },
+    {
+      title: "Flight Booker",
+      component: FlightBooker
     }
   ];
+
   return (
     <main className="max-w-[1024px] py-5 px-[22px] m-auto">
       <h1 className="text-4xl font-semibold">7GUIs implementation with React</h1>

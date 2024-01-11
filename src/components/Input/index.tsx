@@ -1,22 +1,37 @@
+import classnames from "classnames";
+import { ChangeEventHandler } from "react";
+
 export default function Input({
   type,
   value,
   onChange,
   readOnly,
-  placeholder
+  disabled,
+  placeholder,
+  className
 }: {
   type: string;
   value: string | number | undefined;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   readOnly?: boolean;
+  disabled?: boolean;
   placeholder?: string;
+  className?: string;
 }) {
   return (
     <input
-      className="px-2 appearance-none w bg-white border border-solid border-gray-300 outline-0 rounded-md focus:border-blue-400"
+      className={classnames(
+        "px-2 border border-solid border-gray-300 outline-0 rounded-md appearance-none outline-none focus:border-blue-400",
+        className,
+        {
+          "bg-white": !disabled,
+          "bg-gray-100 cursor-not-allowed": disabled
+        }
+      )}
       type={type}
       value={value}
       onChange={onChange}
+      disabled={disabled}
       readOnly={readOnly}
       placeholder={placeholder}
     />
