@@ -21,11 +21,11 @@ export default function Input({
   return (
     <input
       className={classnames(
-        "px-2 border border-solid border-gray-300 outline-0 rounded-md appearance-none outline-none focus:border-blue-400",
+        "appearance-none rounded-md border border-solid border-gray-300 px-2 outline-none outline-0",
         {
-          "bg-white": (!disabled && !hasError),
-          "bg-gray-100 cursor-not-allowed": disabled,
-          "bg-red-300": hasError
+          "bg-white focus:border-blue-400": !disabled && !hasError,
+          "cursor-not-allowed bg-gray-100": disabled,
+          "bg-red-300 focus:border-red-400": hasError
         }
       )}
       type={type}

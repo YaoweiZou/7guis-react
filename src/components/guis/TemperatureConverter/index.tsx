@@ -6,11 +6,11 @@ export default function TemperatureConverter() {
   const [fahrenheit, setFahrenheit] = useState<string>("");
 
   function convertCelsiusToFahrenheit(celsius: number) {
-    return (celsius * 9) / 5 + 32;
+    return ((celsius * 9) / 5 + 32).toFixed(1);
   }
 
   function convertFahrenheitToCelsius(fahrenheit: number) {
-    return ((fahrenheit - 32) * 5) / 9;
+    return (((fahrenheit - 32) * 5) / 9).toFixed(1);
   }
 
   function handleCelsiusChange(value: string) {
@@ -41,12 +41,18 @@ export default function TemperatureConverter() {
 
   return (
     <div className="flex flex-row gap-3">
-      <Input type="string" value={celsius} onChange={e => handleCelsiusChange(e.target.value)} />
+      <Input
+        type="string"
+        value={celsius}
+        onChange={e => handleCelsiusChange(e.target.value)}
+        hasError={Number.isNaN(Number(celsius))}
+      />
       <p>Celsius = </p>
       <Input
         type="string"
         value={fahrenheit}
         onChange={e => handleFahrenheitChange(e.target.value)}
+        hasError={Number.isNaN(Number(fahrenheit))}
       />
       <p>Fahrenheit</p>
     </div>
