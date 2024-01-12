@@ -36,7 +36,7 @@ export default function CRUD() {
   }
 
   function handleCreate() {
-    setDataList(dataList => [...dataList, { id: dataList.length, firstName, lastName }]);
+    setDataList(dataList => [...dataList, { id: Math.floor(Math.random() * 100000), firstName, lastName }]);
     setFirstName("");
     setLastName("");
   }
