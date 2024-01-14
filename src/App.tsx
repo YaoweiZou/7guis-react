@@ -3,6 +3,7 @@ import Counter from "@/components/guis/Counter";
 import FlightBooker from "@/components/guis/FlightBooker";
 import TemperatureConverter from "@/components/guis/TemperatureConverter";
 import CRUD from "./components/guis/CRUD";
+import Timer from "./components/guis/Timer";
 
 function App() {
   const guis = [
@@ -17,6 +18,10 @@ function App() {
     {
       title: "Flight Booker",
       component: FlightBooker
+    },
+    {
+      title: "Timer",
+      component: Timer
     },
     {
       title: "CRUD",
