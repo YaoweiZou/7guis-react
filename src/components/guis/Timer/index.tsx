@@ -32,7 +32,7 @@ export default function Timer() {
     <div className="flex min-w-80 flex-col gap-3">
       <div className="flex flex-row items-center gap-3">
         <span className="min-w-28">Elapsed Time: </span>
-        <meter className="grow" value={time / durationSeconds} />
+        <meter className="grow" value={time / durationSeconds || 0} />
       </div>
       <div className="flex flex-row items-center gap-3">
         <span className="min-w-28"></span>
@@ -40,7 +40,14 @@ export default function Timer() {
       </div>
       <div className="flex flex-row items-center gap-3">
         <span className="min-w-28">Duration: </span>
-        <input className="grow" type="range" min={0} max={3000} onChange={onRangeChange} />
+        <input
+          className="grow"
+          type="range"
+          min={0}
+          max={3000}
+          value={rangeValue}
+          onChange={onRangeChange}
+        />
       </div>
       <Button onClick={reset}>Reset</Button>
     </div>
