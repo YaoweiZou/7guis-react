@@ -1,9 +1,10 @@
 import GUISection from "@/components/GUISection";
+import CRUD from "@/components/guis/CRUD";
+import CircleDrawer from "@/components/guis/CircleDrawer";
 import Counter from "@/components/guis/Counter";
 import FlightBooker from "@/components/guis/FlightBooker";
 import TemperatureConverter from "@/components/guis/TemperatureConverter";
-import CRUD from "./components/guis/CRUD";
-import Timer from "./components/guis/Timer";
+import Timer from "@/components/guis/Timer";
 
 function App() {
   const guis = [
@@ -26,6 +27,10 @@ function App() {
     {
       title: "CRUD",
       component: CRUD
+    },
+    {
+      title: "Circle Drawer",
+      component: CircleDrawer
     }
   ];
 
