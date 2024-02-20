@@ -1,12 +1,12 @@
-import { ReactNode } from "react";
 import classnames from "classnames";
+import React from "react";
 
 export default function Button({
   children,
   onClick,
   disabled
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
   onClick: () => void;
   disabled?: boolean;
 }) {

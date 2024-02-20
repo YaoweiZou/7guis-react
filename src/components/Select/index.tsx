@@ -1,11 +1,11 @@
-import { ChangeEventHandler } from "react";
+import React from "react";
 
 export default function Select({
   options,
   onChange
 }: {
   options: { value: string; label: string }[];
-  onChange: ChangeEventHandler<HTMLSelectElement>;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
 }) {
   return (
     <select

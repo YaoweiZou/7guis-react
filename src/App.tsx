@@ -38,7 +38,7 @@ function App() {
     <main className="m-auto max-w-[1024px] px-[22px] py-5">
       <h1 className="text-4xl font-semibold">7GUIs implementation with React</h1>
       <p className="my-5 text-xl">
-        This is a live version of an implementation of{" "}
+        This is a live version of an implementation of&nbsp;
         <a className="text-blue-500 hover:underline" href="https://eugenkiss.github.io/7guis/">
           7GUIs
         </a>
