@@ -2,41 +2,53 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { ChangeEvent, useState } from "react";
 
+type Data = {
+  id: number;
+  firstName: string;
+  lastName: string;
+};
+
+const defaultDataList = [
+  {
+    id: 0,
+    firstName: "Elon",
+    lastName: "Musk"
+  },
+  {
+    id: 1,
+    firstName: "Joanne",
+    lastName: "Rowling"
+  }
+];
+
 export default function CRUD() {
   const [filterInput, setFilterInput] = useState("");
-  const [dataList, setDataList] = useState<
-    {
-      id: number;
-      firstName: string;
-      lastName: string;
-    }[]
-  >([
-    {
-      id: 0,
-      firstName: "Elon",
-      lastName: "Musk"
-    },
-    {
-      id: 1,
-      firstName: "Joanne",
-      lastName: "Rowling"
-    }
-  ]);
+  const [dataList, setDataList] = useState<Data[]>(defaultDataList);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [selected, setSelected] = useState<number>();
 
   function onSelectChange(e: ChangeEvent<HTMLSelectElement>) {
     const selectedId = Number(e.target.value);
-    setSelected(selectedId);
     const index = dataList.findIndex(data => data.id === selectedId);
     const selectedData = dataList[index];
+    setSelected(selectedId);
     setFirstName(selectedData.firstName);
     setLastName(selectedData.lastName);
   }
 
   function handleCreate() {
-    setDataList(dataList => [...dataList, { id: Math.floor(Math.random() * 100000), firstName, lastName }]);
+    if (firstName || lastName) {
+      setDataList(dataList => [
+        ...dataList,
+        { id: Math.floor(Math.random() * 100000), firstName, lastName }
+      ]);
+    } else {
+      setDataList(dataList => [
+        ...dataList,
+        { id: Math.floor(Math.random() * 100000), firstName: "newBlankItem", lastName }
+      ]);
+    }
     setFirstName("");
     setLastName("");
   }
@@ -49,11 +61,13 @@ export default function CRUD() {
 
   function handleDelete() {
     setDataList(dataList => dataList.filter(data => data.id !== selected));
+    setFirstName("");
+    setLastName("");
   }
 
   return (
-    <div className="">
-      <div className="">
+    <div>
+      <div>
         <span className="mr-2">Filter last name:</span>
         <Input type="text" value={filterInput} onChange={e => setFilterInput(e.target.value)} />
       </div>
@@ -82,10 +96,15 @@ export default function CRUD() {
           </div>
         </div>
       </div>
-      <div className="flex flex-row gap-3">
-        <Button onClick={handleCreate}>Create</Button>
-        <Button onClick={handleUpdate}>Update</Button>
-        <Button onClick={handleDelete}>Delete</Button>
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-row gap-3">
+          <Button onClick={handleCreate}>Create</Button>
+          <Button onClick={handleUpdate}>Update</Button>
+          <Button onClick={handleDelete}>Delete</Button>
+        </div>
+        <div>
+          <span className="text-gray-300">{dataList.length}</span>
+        </div>
       </div>
     </div>
   );
