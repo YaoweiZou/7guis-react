@@ -29,24 +29,15 @@ export default function FlightBooker() {
       (!validateDate(startDate) || !validateDate(returnDate) || startDate > returnDate));
 
   function validateDate(date: string) {
-    return (
-      date.length === 10 &&
-      date.match(/\b[2-9]\d{3}-[01]\d-[0-3]\d\b/) !== null &&
-      new Date(date).getDate() === Number(date.slice(-2))
-    );
+    const dateReg = new RegExp(/^[2-9]\d{3}-[01]\d-[0-3]\d$/);
+    return dateReg.test(date) && new Date(date).getDate() === Number(date.slice(-2));
   }
 
   return (
     <div className="flex flex-col gap-3">
       <Select
         options={selectOptions}
-        onChange={e => {
-          const selected = e.target.value as "one-way-flight" | "return-flight";
-          setFlightType(selected);
-          if (selected === "return-flight") {
-            setReturnDate("2024-01-01");
-          }
-        }}
+        onChange={e => setFlightType(e.target.value as "one-way-flight" | "return-flight")}
       />
       <Input
         type="text"
@@ -55,15 +46,14 @@ export default function FlightBooker() {
         placeholder="input start date"
         hasError={!validateDate(startDate)}
       />
-      {flightType === "return-flight" && (
-        <Input
-          type="text"
-          value={returnDate}
-          onChange={e => setReturnDate(e.target.value)}
-          placeholder="input return date"
-          hasError={!validateDate(returnDate)}
-        />
-      )}
+      <Input
+        type="text"
+        value={returnDate}
+        onChange={e => setReturnDate(e.target.value)}
+        placeholder="input return date"
+        hasError={!validateDate(returnDate)}
+        disabled={flightType !== "return-flight"}
+      />
       <Button onClick={onBookClick} disabled={disabledBook}>
         Book
       </Button>

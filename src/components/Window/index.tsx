@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import React from "react";
 
-export default function Window({ title, children }: { title: string; children: ReactNode }) {
+export default function Window({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col overflow-hidden rounded-xl border border-solid border-gray-300 shadow-lg">
       <div className="flex h-7 select-none flex-col justify-center border-b border-solid border-gray-300 bg-gray-50 px-3">

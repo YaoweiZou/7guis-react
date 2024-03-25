@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { ChangeEventHandler } from "react";
+import React from "react";
 
 export default function Input({
   type,
@@ -12,7 +12,7 @@ export default function Input({
 }: {
   type: string;
   value: string | number | undefined;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readOnly?: boolean;
   disabled?: boolean;
   placeholder?: string;
@@ -24,8 +24,8 @@ export default function Input({
         "appearance-none rounded-md border border-solid border-gray-300 px-2 outline-none outline-0",
         {
           "bg-white focus:border-blue-400": !disabled && !hasError,
-          "cursor-not-allowed bg-gray-100": disabled,
-          "bg-red-300 focus:border-red-400": hasError
+          "bg-red-500 text-white": hasError && !disabled,
+          "cursor-not-allowed bg-gray-100": disabled
         }
       )}
       type={type}

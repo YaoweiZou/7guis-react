@@ -1,7 +1,13 @@
 import Window from "@/components/Window";
-import { ReactNode } from "react";
+import React from "react";
 
-export default function GUISection({ title, children }: { title: string; children: ReactNode }) {
+export default function GUISection({
+  title,
+  children
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <section className="py-5">
       <h2 className="text-2xl font-semibold">{title}</h2>
